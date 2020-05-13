@@ -11,7 +11,10 @@ class App extends React.Component<IAppProps, IAppState> {
 		assistLeaders: [],
 		coach: [],
 		team: [],
-		player: []
+		player: [],
+		longestCoaches: [],
+		sixthMan: [],
+		freeThrowTeam: []
 		};
 	}
 
@@ -23,13 +26,19 @@ class App extends React.Component<IAppProps, IAppState> {
 			let a = await fetch('/api/coachLookup');
 			let b = await fetch('/api/teamLookup');
 			let c = await fetch('/api/playerLookup');
+			let d = await fetch('/api/longestCoaches');
+			let e = await fetch('/api/sixthMan');
+			let f = await fetch('/api/bestFreeThrowTeam');
 			let pointLeaders = await x.json();
 			let reboundLeaders = await y.json();
 			let assistLeaders = await z.json();
 			let coach = await a.json();
 			let team = await b.json();
 			let player = await c.json();
-			this.setState({ pointLeaders, reboundLeaders, assistLeaders, coach, team, player });
+			let longestCoaches = await d.json();
+			let sixthMan = await e.json();
+			let freeThrowTeam = await f.json();
+			this.setState({ pointLeaders, reboundLeaders, assistLeaders, coach, team, player, longestCoaches, sixthMan, freeThrowTeam });
 		} catch (error) {
 			console.log(error);
 		}
@@ -44,6 +53,9 @@ class App extends React.Component<IAppProps, IAppState> {
 					coachLookup = {this.state.coach}
 					teamLookup = {this.state.team}
 					playerLookup = {this.state.player}
+					longestCoaches = {this.state.longestCoaches}
+					sixthMan = {this.state.sixthMan}
+					freeThrowTeam = {this.state.freeThrowTeam}
 				/>
 			</div>
 		);

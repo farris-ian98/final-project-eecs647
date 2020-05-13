@@ -7,10 +7,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 
-function DataDisplay(Players){
-  return(
+function DataDisplay(Players, playerName){
+  let index = 569;
+  if (playerName != null){
+    index = Players.findIndex(x => x.Player === playerName);
+    if (index < 0 || index > 568){
+      index = 569;
+    }
+  }
 
-    Object.entries(Players[0]).slice(1).map(([key, val]) =>
+  return(
+    Object.entries(Players[index]).map(([key, val]) =>
       <div style={{
         clear: "both"
       }}>
@@ -25,7 +32,7 @@ function DataDisplay(Players){
     ))
 }
 export default function PlayerStatCard(props){
-  let display = DataDisplay(props.data)
+  let display = DataDisplay(props.data, props.pName)
   return(
     <Box display = "right" style={{
       paddingTop: "2%",
@@ -37,7 +44,7 @@ export default function PlayerStatCard(props){
 
       <Card width= "30px">
         <CardHeader
-        title = {props.data[0].Player}
+        title = "Player Lookup"
         />
         <CardContent>
           {display}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,6 +12,9 @@ import CoachStatCard from './CoachStatCard.tsx';
 import logo from '../images/logo-image.png'
 import Toolbar from '@material-ui/core/Toolbar';
 import TeamStatCard from './TeamStatCard';
+import LongestCoaches from './LongestCoaches.tsx';
+import SixthMan from './SixthMan.tsx';
+import FreeThrows from './FreeThrows.tsx';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -54,13 +57,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TabsWrappedLabel(props) {
+  let submitted = false;
   const classes = useStyles();
   const [value, setValue] = React.useState('one');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const [name, setName] = useState("");
 
+  const handleSubmit = (evt) => {
+      evt.preventDefault();
+      alert(`Submitting Name ${name}`)
+  }
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -96,13 +105,25 @@ export default function TabsWrappedLabel(props) {
           <StatLeaders stat = {"rebounds"} data = {props.reboundLeaders}/>
           <StatLeaders stat = {"assists"} data = {props.assistLeaders}/>
         </Box>
+        <Box display = "flex">
+          <LongestCoaches data = {props.longestCoaches}/>
+          <SixthMan data = {props.sixthMan}/>
+          <FreeThrows data = {props.freeThrowTeam}/>
+        </Box>
       </TabPanel>
       <TabPanel value={value} index="two">
-        <p> input player name</p>
-        <input type="text" id="lname" name="lname" label="player name"/>
-        <button type="button">Submit</button>
+        <form onSubmit={handleSubmit}>
+          <label>
+            input player name:
+            <input
+              type="text"
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+          </label>
+        </form>
         <Box display = "center">
-          <PlayerStatCard data = {props.playerLookup}/>
+          {name ? <PlayerStatCard data = {props.playerLookup} pName = {name}/> : null}
         </Box>
       </TabPanel>
       <TabPanel value={value} index="three">

@@ -66,4 +66,34 @@ router.get('/api/playerLookup', async (req, res) => {
     res.sendStatus(500);
   }
 })
+
+router.get('/api/longestCoaches', async (req, res) => {
+  try{
+    let lc = await DB.longestCoaches.all();
+    res.json(lc);
+  } catch(e){
+    console.log(e);
+    res.sendStatus(500);
+  }
+})
+
+router.get('/api/sixthMan', async (req, res) => {
+  try{
+    let sm = await DB.sixthMan.all();
+    res.json(sm);
+  } catch(e){
+    console.log(e);
+    res.sendStatus(500);
+  }
+})
+
+router.get('/api/bestFreeThrowTeam', async (req, res) => {
+  try{
+    let bftt = await DB.bestFreeThrowTeam.all();
+    res.json(bftt);
+  } catch(e){
+    console.log(e);
+    res.sendStatus(500);
+  }
+})
 export default router;
