@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function dataDisplay(stat, data){
+function dataDisplay(stat: any, data: any){
   let dataType
   let Players = data
   if(stat == "points"){
@@ -48,7 +49,7 @@ function dataDisplay(stat, data){
   )))
 }
 
-export default function StatLeaders(props){
+export default function StatLeaders(props: any){
   const classes = useStyles();
   let display = dataDisplay(props.stat, props.data)
 

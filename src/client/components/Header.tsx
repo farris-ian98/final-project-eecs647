@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,14 +10,13 @@ import Box from '@material-ui/core/Box';
 import StatLeaders from './StatLeaders.tsx';
 import PlayerStatCard from './PlayerStatCard.tsx';
 import CoachStatCard from './CoachStatCard.tsx';
-import logo from '../images/logo-image.png'
 import Toolbar from '@material-ui/core/Toolbar';
 import TeamStatCard from './TeamStatCard';
 import LongestCoaches from './LongestCoaches.tsx';
 import SixthMan from './SixthMan.tsx';
 import FreeThrows from './FreeThrows.tsx';
 
-function TabPanel(props) {
+function TabPanel(props: any) {
   const { children, value, index, ...other } = props;
 
   return (
@@ -39,14 +39,14 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function a11yProps(index) {
+function a11yProps(index: any) {
   return {
     id: `wrapped-tab-${index}`,
     'aria-controls': `wrapped-tabpanel-${index}`,
   };
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: any) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
@@ -56,12 +56,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TabsWrappedLabel(props) {
+export default function TabsWrappedLabel(props: any) {
   let submitted = false;
   const classes = useStyles();
   const [value, setValue] = React.useState('one');
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (event: any, newValue: any) => {
     setValue(newValue);
   };
   const [name, setName] = useState('');
@@ -71,7 +71,7 @@ export default function TabsWrappedLabel(props) {
   const [name5, setName5] = useState('');
   const [name6, setName6] = useState('');
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: any) => {
       evt.preventDefault();
       alert(`Submitting Name ${name}`)
   }

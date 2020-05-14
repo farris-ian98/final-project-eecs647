@@ -3,11 +3,11 @@ import Header from './components/Header.tsx';
 import Box from '@material-ui/core/Box';
 
 class App extends React.Component<IAppProps, IAppState> {
-	constructor(props: IAppProps) {
+	constructor(props: any) {
 		super(props);
 		this.state = {
-		pointLeaders	: [],
-		reboundLeaders : [],
+		pointLeaders: [],
+		reboundLeaders: [],
 		assistLeaders: [],
 		coach: [],
 		team: [],
@@ -65,7 +65,15 @@ class App extends React.Component<IAppProps, IAppState> {
 export interface IAppProps {}
 
 export interface IAppState {
-	name: string;
+	pointLeaders: [];
+	reboundLeaders: [];
+	assistLeaders: [];
+	coach: [];
+	team: [];
+	player: [];
+	longestCoaches: [];
+	sixthMan: [];
+	freeThrowTeam: [];
 }
 
 export default App;

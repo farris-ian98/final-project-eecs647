@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -6,18 +7,18 @@ import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: any) => ({
   root: {
     maxWidth: "3%",
   },
 }))
 
-function dataDisplay(data){
+function dataDisplay(data: any){
   let dataType
   let Coaches = data
 
   return(
-    Coaches.map((Coaches) => (
+    Coaches.map((Coaches: any) => (
       <div style={{
         clear: "both"
       }}>
@@ -40,7 +41,7 @@ function dataDisplay(data){
   )))
 }
 
-export default function LongestCoaches(props){
+export default function LongestCoaches(props: any){
   const classes = useStyles();
   let display = dataDisplay(props.data)
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -7,10 +8,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 
-function DataDisplay(Players, playerName){
+function DataDisplay(Players: any, playerName: any){
   let index = 569;
   if (playerName != null){
-    index = Players.findIndex(x => x.Player === playerName);
+    index = Players.findIndex((x: any) => x.Player === playerName);
     if (index < 0 || index > 568){
       index = 569;
     }
@@ -31,7 +32,7 @@ function DataDisplay(Players, playerName){
       </div>
     ))
 }
-export default function PlayerStatCard(props){
+export default function PlayerStatCard(props: any){
   let display = DataDisplay(props.data, props.pName)
   return(
     <Box display = "center" style={{

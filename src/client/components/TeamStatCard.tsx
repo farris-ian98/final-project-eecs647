@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -8,7 +9,7 @@ import Box from '@material-ui/core/Box';
 
 let index = 0;
 
-function DataDisplay(teams, tName){
+function DataDisplay(teams: any, tName: any){
   if (tName != null){
     index = teams.findIndex(x => x.Team === tName);
     if (index < 2 || index > 31){
@@ -32,7 +33,7 @@ function DataDisplay(teams, tName){
     ))
 
 }
-export default function TeamStatCard(props){
+export default function TeamStatCard(props: any){
   let display = DataDisplay(props.data, props.tName)
   return(
     <Box display = "right" style={{

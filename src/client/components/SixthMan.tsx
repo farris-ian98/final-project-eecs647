@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function dataDisplay(data){
+function dataDisplay(data: any){
   let dataType
   let Players = data
 
@@ -40,7 +41,7 @@ function dataDisplay(data){
   )))
 }
 
-export default function SixthMan(props){
+export default function SixthMan(props: any){
   const classes = useStyles();
   let display = dataDisplay(props.data)
 

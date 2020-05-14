@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -6,11 +7,11 @@ import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 
-function DataDisplay(coach, coachName){
+function DataDisplay(coach: any, coachName: any){
   console.log(coach);
   let index = 332;
   if (coachName != null){
-    index = coach.findIndex(x => x.Coach === coachName)
+    index = coach.findIndex((x: any) => x.Coach === coachName)
     if(index < 0 || index > 334){
       index = 332;
     }
@@ -30,10 +31,10 @@ function DataDisplay(coach, coachName){
       </div>
     ))
 }
-export default function CoachStatCard(props){
+export default function CoachStatCard(props: any){
   let display = DataDisplay(props.data, props.cName)
-  console.log(props.cName);
   return(
+    // @ts-ignore
     <Box display = "right" style={{
       paddingTop: "2%",
       paddingLeft: "2%",
@@ -41,12 +42,15 @@ export default function CoachStatCard(props){
       border: "2%",
       width: "50%"
     }}>
-
-      <Card width= "30px">
+      <Card // @ts-ignore
+      >
         <CardHeader
-        title = "Coach Lookup"
+          // @ts-ignore
+        title = {"Coach Lookup"}
+        // @ts-ignore
         />
-        <CardContent>
+        <CardContent // @ts-ignore
+        >
           {display}
         </CardContent>
       </Card>
