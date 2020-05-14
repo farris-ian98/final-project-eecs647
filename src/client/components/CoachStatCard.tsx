@@ -6,11 +6,17 @@ import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 
-function DataDisplay(coach){
-  console.log(coach)
+function DataDisplay(coach, coachName){
+  console.log(coach);
+  let index = 332;
+  if (coachName != null){
+    index = coach.findIndex(x => x.Coach === coachName)
+    if(index < 0 || index > 334){
+      index = 332;
+    }
+  }
   return(
-
-    Object.entries(coach[0]).slice(1).map(([key, val]) =>
+    Object.entries(coach[index]).map(([key, val]) =>
       <div style={{
         clear: "both"
       }}>
@@ -25,7 +31,8 @@ function DataDisplay(coach){
     ))
 }
 export default function CoachStatCard(props){
-  let display = DataDisplay(props.data)
+  let display = DataDisplay(props.data, props.cName)
+  console.log(props.cName);
   return(
     <Box display = "right" style={{
       paddingTop: "2%",
@@ -37,7 +44,7 @@ export default function CoachStatCard(props){
 
       <Card width= "30px">
         <CardHeader
-        title = {props.data[0].Coach}
+        title = "Coach Lookup"
         />
         <CardContent>
           {display}

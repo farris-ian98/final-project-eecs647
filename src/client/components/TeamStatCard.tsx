@@ -6,10 +6,18 @@ import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 
-function DataDisplay(team){
+let index = 0;
+
+function DataDisplay(teams, tName){
+  if (tName != null){
+    index = teams.findIndex(x => x.Team === tName);
+    if (index < 2 || index > 31){
+      index = 0;
+    }
+  }
   return(
 
-    Object.entries(team[0]).slice(1, 10).map(([key, val]) =>
+    Object.entries(teams[index]).slice(0, 10).map(([key, val]) =>
       <div style={{
         clear: "both"
       }}>
@@ -25,7 +33,7 @@ function DataDisplay(team){
 
 }
 export default function TeamStatCard(props){
-  let display = DataDisplay(props.data)
+  let display = DataDisplay(props.data, props.tName)
   return(
     <Box display = "right" style={{
       paddingTop: "2%",
@@ -37,7 +45,7 @@ export default function TeamStatCard(props){
 
       <Card width= "30px">
         <CardHeader
-        title = {props.data[0].LOCATION}
+        title = "Team Lookup"
         />
         <CardContent>
           {display}
@@ -49,7 +57,7 @@ export default function TeamStatCard(props){
               Highest Scorer:
             </p>
             <p style={{float: "right"}}>
-              {props.data[0].PLAYER}
+              {props.data[index].PLAYER}
             </p>
           </div>
         </CardContent>

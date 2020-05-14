@@ -34,7 +34,7 @@ function DataDisplay(Players, playerName){
 export default function PlayerStatCard(props){
   let display = DataDisplay(props.data, props.pName)
   return(
-    <Box display = "right" style={{
+    <Box display = "center" style={{
       paddingTop: "2%",
       paddingLeft: "2%",
       paddingRight: "2%",

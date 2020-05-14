@@ -64,7 +64,12 @@ export default function TabsWrappedLabel(props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
+  const [name2, setName2] = useState('');
+  const [name3, setName3] = useState('');
+  const [name4, setName4] = useState('');
+  const [name5, setName5] = useState('');
+  const [name6, setName6] = useState('');
 
   const handleSubmit = (evt) => {
       evt.preventDefault();
@@ -114,32 +119,77 @@ export default function TabsWrappedLabel(props) {
       <TabPanel value={value} index="two">
         <form onSubmit={handleSubmit}>
           <label>
-            input player name:
+            input player name 1:  &nbsp;
             <input
               type="text"
               value={name}
               onChange={e => setName(e.target.value)}
             />
           </label>
+           &nbsp; &nbsp;
+          <label>
+            input player name 2:  &nbsp;
+            <input
+              type="text"
+              value={name4}
+              onChange={e => setName4(e.target.value)}
+            />
+          </label>
         </form>
-        <Box display = "center">
+        <Box display = "flex">
           {name ? <PlayerStatCard data = {props.playerLookup} pName = {name}/> : null}
+          {name4 ? <PlayerStatCard data = {props.playerLookup} pName = {name4}/> : null}
         </Box>
       </TabPanel>
       <TabPanel value={value} index="three">
-        <Box display = "center">
-          <p> input coach name</p>
-          <input type="text" id="lname" name="lname" label="coach name"/>
-          <button type="button">Submit</button>
-          <CoachStatCard data = {props.coachLookup}/>
+        <form onSubmit={handleSubmit}>
+          <label>
+            input coach name 1: &nbsp;
+            <input
+              type="text"
+              value={name2}
+              onChange={e => setName2(e.target.value)}
+            />
+          </label>
+           &nbsp;  &nbsp;
+          <label>
+            input coach name 2:  &nbsp;
+            <input
+              type="text"
+              value={name5}
+              onChange={e => setName5(e.target.value)}
+            />
+          </label>
+        </form>
+        <Box display = "flex">
+          {name2 ? <CoachStatCard data = {props.coachLookup} cName = {name2}/> : null}
+          {name5 ? <CoachStatCard data = {props.coachLookup} cName = {name5}/> : null}
         </Box>
       </TabPanel>
       <TabPanel value={value} index="four">
-        <Box display = "center">
-          <p> input team city</p>
-          <input type="text" id="lname" name="lname" label="team name"/>
-          <button type="button">Submit</button>
-          <TeamStatCard data = {props.teamLookup}/>
+        <form onSubmit={handleSubmit}>
+          <label>
+            input team name 1: &nbsp;
+            <input
+              type="text"
+              value={name3}
+              onChange={e => setName3(e.target.value)}
+            />
+          </label>
+          &nbsp; &nbsp;
+          <label>
+            input team name 2: &nbsp;
+            <input
+              type="text"
+              value={name6}
+              onChange={e => setName6(e.target.value)}
+            />
+          </label>
+
+        </form>
+        <Box display = "flex">
+          {name3 ? <TeamStatCard data = {props.teamLookup} tName = {name3}/> : null}
+          {name6 ? <TeamStatCard data = {props.teamLookup} tName = {name6}/> : null}
         </Box>
       </TabPanel>
     </div>
